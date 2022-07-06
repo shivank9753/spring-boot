@@ -1,0 +1,43 @@
+server:
+    error:
+        include-binding-errors: always
+        include-message: always
+    port: 8078
+spring:
+    profiles:
+        active: H2
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+---
+spring:
+    profiles: MySQL
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: Afagc22awsde1
+        url: jdbc:mysql://localhost:3306/learnSpring
+        username: root
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        show-sql: true
+welcome:
+    message: Hi!!! welcome to the World Of Dracula with MySQL DB
+
+
+---
+
+spring:
+    profiles: H2
+    datasource:
+        username: Dracula
+        url: jdbc:h2:mem:springLearn
+        driverClassName: org.h2.Driver
+        password: ''
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+welcome:
+    message: Hi!!! welcome to the World Of Dracula with H2 DB
